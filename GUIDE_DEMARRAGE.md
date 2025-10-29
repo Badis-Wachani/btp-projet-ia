@@ -1,4 +1,4 @@
-# Application Fitness - Guide de démarrage
+# Habit Tracker Sport - Guide de démarrage
 
 ## 📋 Description
 
@@ -25,7 +25,7 @@ npm --version
 
 1. **Naviguez vers le dossier du projet**
 ```bash
-cd fitness-app
+cd habit-tracker-sport
 ```
 
 2. **Installez les dépendances** (si ce n'est pas déjà fait)
@@ -88,7 +88,7 @@ Construit l'application pour la production dans le dossier `build`.
 ## 📁 Structure du projet
 
 ```
-fitness-app/
+habit-tracker-sport/
 ├── public/
 │   └── index.html
 ├── src/
