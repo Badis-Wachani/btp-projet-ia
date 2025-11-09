@@ -87,13 +87,27 @@ function Routine({ onBack, isDarkMode }) {
         </div>
         <div style={{
           marginTop: '2rem',
-          padding: '1.5rem',
-          background: '#f0f0f0',
-          borderRadius: '10px',
-          textAlign: 'center'
+          padding: '2rem',
+          background: isDarkMode 
+            ? 'linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(240, 84, 84, 0.1) 100%)'
+            : 'linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(240, 84, 84, 0.05) 100%)',
+          border: isDarkMode 
+            ? '1px solid rgba(102, 126, 234, 0.3)' 
+            : '1px solid rgba(102, 126, 234, 0.2)',
+          borderRadius: '12px',
+          textAlign: 'center',
+          color: isDarkMode ? '#ffffff' : '#000000'
         }}>
-          <h4 style={{ color: '#667eea', marginBottom: '0.5rem' }}>💡 Conseil du jour</h4>
-          <p style={{ color: '#666' }}>
+          <h4 style={{ 
+            color: isDarkMode ? '#667eea' : '#667eea', 
+            marginBottom: '0.5rem',
+            marginTop: '0'
+          }}>💡 Conseil du jour</h4>
+          <p style={{ 
+            color: isDarkMode ? '#ccc' : '#333',
+            margin: '0',
+            lineHeight: '1.6'
+          }}>
             La régularité est la clé du succès. Respectez votre planning et vous verrez des résultats !
           </p>
         </div>

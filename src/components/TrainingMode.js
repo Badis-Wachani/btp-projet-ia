@@ -90,23 +90,6 @@ function TrainingMode({ onBack, isDarkMode }) {
             </div>
           ))}
         </div>
-        <button 
-          style={{
-            marginTop: '2rem',
-            background: '#667eea',
-            color: 'white',
-            border: 'none',
-            padding: '1rem 2rem',
-            borderRadius: '25px',
-            fontSize: '1rem',
-            cursor: 'pointer',
-            width: '100%',
-            fontWeight: 'bold'
-          }}
-          onClick={() => alert('Nouvelle séance ajoutée !')}
-        >
-          + Ajouter un exercice
-        </button>
       </div>
     </div>
   );

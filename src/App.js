@@ -1,13 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Auth from './components/Auth';
 import TrainingMode from './components/TrainingMode';
 import Routine from './components/Routine';
 import CalorieCalculator from './components/CalorieCalculator';
 import Videos from './components/Videos';
+import History from './components/History';
 
 function App() {
   const [activeView, setActiveView] = useState('home');
   const [isDarkMode, setIsDarkMode] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const savedUser = localStorage.getItem('currentUser');
+    if (savedUser) {
+      setCurrentUser(JSON.parse(savedUser));
+    }
+    setIsLoading(false);
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem('currentUser');
+    setCurrentUser(null);
+    setActiveView('home');
+  };
+
+  const handleAuthSuccess = (user) => {
+    setCurrentUser(user);
+    setActiveView('home');
+  };
+
+  if (isLoading) {
+    return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Chargement...</div>;
+  }
+
+  if (!currentUser) {
+    return <Auth onAuthSuccess={handleAuthSuccess} isDarkMode={isDarkMode} />;
+  }
 
   const renderContent = () => {
     switch (activeView) {
@@ -19,6 +50,8 @@ function App() {
         return <CalorieCalculator onBack={() => setActiveView('home')} isDarkMode={isDarkMode} />;
       case 'videos':
         return <Videos onBack={() => setActiveView('home')} isDarkMode={isDarkMode} />;
+      case 'history':
+        return <History onBack={() => setActiveView('home')} isDarkMode={isDarkMode} />;
       default:
         return null;
     }
@@ -28,7 +61,8 @@ function App() {
     { id: 'training', label: '🏋️ Entraînement', icon: '🏋️' },
     { id: 'routine', label: '📅 Routine', icon: '📅' },
     { id: 'calories', label: '🔥 Calories', icon: '🔥' },
-    { id: 'videos', label: '🎬 Vidéos', icon: '🎬' }
+    { id: 'videos', label: '🎬 Vidéos', icon: '🎬' },
+    { id: 'history', label: '📜 Histoire', icon: '📜' }
   ];
 
   return (
@@ -45,7 +79,11 @@ function App() {
         borderBottom: isDarkMode ? '1px solid rgba(102, 126, 234, 0.2)' : '1px solid rgba(102, 126, 234, 0.15)',
         boxShadow: isDarkMode
           ? '0 8px 32px rgba(0, 0, 0, 0.4), 0 0 50px rgba(102, 126, 234, 0.1)'
-          : '0 8px 32px rgba(102, 126, 234, 0.12), 0 0 50px rgba(102, 126, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)'
+          : '0 8px 32px rgba(102, 126, 234, 0.12), 0 0 50px rgba(102, 126, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '0 20px'
       }}>
         <div className="nav-brand" onClick={() => setActiveView('home')} style={{
           color: isDarkMode ? '#ffffff' : '#000000',
@@ -54,7 +92,19 @@ function App() {
         }}>
           💪 Habit Tracker Sport
         </div>
-        <div className="nav-links">
+        <div className="nav-center" style={{
+          color: isDarkMode ? '#aaa' : '#666',
+          fontSize: '14px',
+          flexGrow: 1,
+          textAlign: 'center'
+        }}>
+          Bienvenue, <strong>{currentUser.name}</strong>
+        </div>
+        <div className="nav-links" style={{
+          display: 'flex',
+          gap: '10px',
+          alignItems: 'center'
+        }}>
           <button
             onClick={() => setIsDarkMode(!isDarkMode)}
             style={{
@@ -70,6 +120,22 @@ function App() {
             title={isDarkMode ? 'Mode clair' : 'Mode sombre'}
           >
             {isDarkMode ? '☀️' : '🌙'}
+          </button>
+          <button
+            onClick={handleLogout}
+            style={{
+              background: '#ff6b6b',
+              color: 'white',
+              border: 'none',
+              padding: '0.6rem 1rem',
+              borderRadius: '8px',
+              cursor: 'pointer',
+              fontSize: '0.9rem',
+              transition: 'all 0.3s ease'
+            }}
+            title="Se déconnecter"
+          >
+            🚪 Déconnexion
           </button>
         </div>
       </nav>
