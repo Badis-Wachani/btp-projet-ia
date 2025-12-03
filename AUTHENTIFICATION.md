@@ -18,6 +18,19 @@ Une interface d'authentification complète a été ajoutée à votre application
 2. Cliquez sur **"🔓 Se connecter"**
 3. Vous serez redirigé vers l'accueil
 
+### 🔐 Se Connecter avec Google
+1. Entrez votre **Email Google** (ex: `votre.email@gmail.com`)
+2. Cliquez sur **"🔐 Se connecter avec Google"**
+3. Vous serez automatiquement connecté/inscrit
+4. Un nouveau compte est créé si l'email n'existe pas
+
+### 🔑 Mot de Passe Oublié
+1. Sur l'écran de connexion, cliquez sur **"🔑 Mot de passe oublié?"**
+2. Entrez votre **Email**
+3. Cliquez sur **"📧 Envoyer le lien"**
+4. Un **code temporaire** s'affichera (valide 1 heure)
+5. Utilisez ce code pour réinitialiser votre accès
+
 ### 🚪 Se Déconnecter
 - Cliquez sur le bouton **"🚪 Déconnexion"** dans la navbar en haut à droite
 
@@ -42,13 +55,19 @@ Les données sont stockées dans le **localStorage** de votre navigateur:
 
 ## 🧪 Tester l'Application
 
-### Compte de test:
+### Comptes de test:
 - **Email**: test@example.com
 - **Mot de passe**: test123456
 - **Nom**: Test User
 
 ### Créer un nouveau compte:
 Cliquez sur "S'inscrire" et remplissez les informations.
+
+### Tester Google Sign-In:
+Entrez n'importe quel email Gmail (ex: `test@gmail.com`) et cliquez sur "Se connecter avec Google".
+
+### Tester Mot de Passe Oublié:
+Cliquez sur "Mot de passe oublié", entrez un email existant et recevez un code temporaire.
 
 ---
 
@@ -59,6 +78,10 @@ Cliquez sur "S'inscrire" et remplissez les informations.
 - Hashez les mots de passe (ne les stockez jamais en clair)
 - Utilisez des tokens JWT ou des sessions sécurisées
 - Chiffrez les données sensibles
+- Implémentez Google OAuth 2.0 correctement
+- Mettez en place la validation email pour la réinitialisation
+
+Pour une intégration complète avec Google OAuth en production, consultez le fichier **GOOGLE_AUTH_GUIDE.md**.
 
 ---
 

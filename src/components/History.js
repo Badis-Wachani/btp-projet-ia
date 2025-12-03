@@ -49,7 +49,8 @@ function History({ onBack, isDarkMode }) {
   return (
     <div className="history-container" style={{
       padding: '2rem',
-      color: isDarkMode ? '#ffffff' : '#000000'
+      color: isDarkMode ? '#ffffff' : '#000000',
+      minHeight: '100vh'
     }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h2>📜 Histoire</h2>

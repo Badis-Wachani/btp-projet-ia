@@ -74,7 +74,9 @@ function Videos({ onBack, isDarkMode }) {
         color: isDarkMode ? '#ffffff' : '#000000',
         boxShadow: isDarkMode
           ? '0 25px 70px rgba(0, 0, 0, 0.5), 0 0 60px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(102, 126, 234, 0.1)'
-          : '0 25px 70px rgba(102, 126, 234, 0.12), 0 0 60px rgba(102, 126, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95)'
+          : '0 25px 70px rgba(102, 126, 234, 0.12), 0 0 60px rgba(102, 126, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95)',
+        minHeight: '100vh'
+      }}>
       }}>
         <div className="view-header" style={{
           borderBottom: isDarkMode ? '2px solid #444' : '2px solid #f0f0f0'
@@ -191,7 +193,8 @@ function Videos({ onBack, isDarkMode }) {
       color: isDarkMode ? '#ffffff' : '#000000',
       boxShadow: isDarkMode
         ? '0 25px 70px rgba(0, 0, 0, 0.5), 0 0 60px rgba(102, 126, 234, 0.15), inset 0 1px 0 rgba(102, 126, 234, 0.1)'
-        : '0 25px 70px rgba(102, 126, 234, 0.12), 0 0 60px rgba(102, 126, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95)'
+        : '0 25px 70px rgba(102, 126, 234, 0.12), 0 0 60px rgba(102, 126, 234, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95)',
+      minHeight: '100vh'
     }}>
       <div className="view-header" style={{
         borderBottom: isDarkMode ? '2px solid #444' : '2px solid #f0f0f0'
